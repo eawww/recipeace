@@ -2,6 +2,9 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
+import Controller from "./components/Controller";
+import Display from "./components/Display";
+
 function App() {
   return (
     <Router>
@@ -10,18 +13,18 @@ function App() {
         exact={true}
         render={() => (
           <div className="App">
-            <header className="App-header">We're HOME</header>
+            <h1 className="App-header">Home!</h1>
             <Link to={"/display"}>
-              <h1>Display</h1>
+              <h2>Display</h2>
             </Link>
             <Link to={"/controller"}>
-              <h1>Controller</h1>
+              <h2>Controller</h2>
             </Link>
           </div>
         )}
       />
-      <Route path="/controller" component={null} />
-      <Route path="/display" component={null} />
+      <Route path="/controller" component={Controller} />
+      <Route path="/display" component={Display} />
     </Router>
   );
 }
