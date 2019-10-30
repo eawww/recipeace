@@ -2,6 +2,9 @@ const express = require("express");
 var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
+const ip = require("ip");
+
+const FRONTEND_PORT = 3000;
 
 server.listen(3001);
 
@@ -14,6 +17,7 @@ controllerNamespace.on("connection", socket => {
 
 displayNamespace.on("connection", socket => {
   console.log(`${new Date().toISOString()} - Display Connected`);
+  socket.emit('controllerUrl', `http://${ip.address()}${`:${FRONTEND_PORT}`}/controller`);
 });
 
 app.get("/bort", (req, res) => {
