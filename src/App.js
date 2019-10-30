@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
@@ -6,6 +6,10 @@ import Controller from "./components/Controller";
 import Display from "./components/Display";
 
 function App() {
+  useEffect(() => {
+    fetch("/bort").then(async result => console.log(await result.text()));
+    return () => {};
+  }, []);
   return (
     <Router>
       <Route
