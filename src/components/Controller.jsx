@@ -16,7 +16,7 @@ const Controller = () => {
       <Link to={"/"}>
         <h2>Home</h2>
       </Link>
-      <input type="text" ref={textRef} />
+      <input type="text" />
       <button onClick={sendIt} />
     </div>
   );
