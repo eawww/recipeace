@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Controller.css";
 
 class Controller extends Component {
   render() {
