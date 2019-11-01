@@ -13,11 +13,17 @@ const displayNamespace = io.of("/display");
 
 controllerNamespace.on("connection", socket => {
   console.log(`${new Date().toISOString()} - Controller Connected`);
+  socket.on("url", data => {
+    console.log(`Hey this came in the mail for you: ${data}`);
+  });
 });
 
 displayNamespace.on("connection", socket => {
   console.log(`${new Date().toISOString()} - Display Connected`);
-  socket.emit('controllerUrl', `http://${ip.address()}${`:${FRONTEND_PORT}`}/controller`);
+  socket.emit(
+    "controllerUrl",
+    `http://${ip.address()}${`:${FRONTEND_PORT}`}/controller`
+  );
 });
 
 app.get("/bort", (req, res) => {
